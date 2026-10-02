@@ -1,16 +1,38 @@
-//#pragma warning(disable:4996)
-//#include <stdio.h>
-//
-//int main() {
-//	double a, b;
-//	double r, area;
-//	scanf("%lf %lf", &a, &b);
-//	scanf("%lf", &r);
-//	printf("inch;%0.2lf,cm:%0.2lf\n",a, a * 2.54);
-//	printf("C:%0.2lf,F:%0.2lf\n",b, (b*1.8) +32);
-//
-//	area = r* r * 3.14;
-//	printf("r:%0.2f,area:%0.2f\n", r, area);
-//	
-//	return 0;
-//}
+#include <windows.h>
+#include <stdio.h>
+
+
+int isleafyear(int year) {
+	int isleaf = 0;
+
+	if (year % 4 == 0) {
+		if (year % 100 == 0) {
+			if (year % 400 == 0) {
+				isleaf = 1;
+			}
+		}
+		else {
+			isleaf = 1;
+		}
+	}
+	return isleaf;
+}
+void exerc3(void) {
+	int year, leafyear;
+
+	printf("input year: ");
+	scanf_s("%d", &year);
+	
+	if (isleafyear(year) == 1) {
+		printf("윤년입니다.\n");
+	}
+	else {
+		printf("평년입니다.\n");
+	}
+}
+
+int main(void) {
+	SetConsoleOutputCP(CP_UTF8);
+	exerc3();
+	return 0;
+}
